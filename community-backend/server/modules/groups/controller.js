@@ -1,5 +1,5 @@
 import Group from "./model";
-import Meeting from "../meetings/model";
+import { Meeting } from "../meetings";
 
 export const createGroup = async (req, res) => {
     const {
@@ -62,7 +62,7 @@ export const createNewGroupMeeting = async (req, res) => {
     // const newMeeting = new Meeting({title, description, groupId, eventDate });
 
     try {
-        const [meeting, group] = await Group.addMeeting(groupId, {title, description, eventDate});
+        const {meeting, group} = await Group.addMeeting(groupId, {title, description, eventDate});
         return res.status(201).json({error: false, meeting, group});
         // console.log(result);
         // return res.status(210).json({meeting: await newMeeting.save()});
@@ -71,10 +71,18 @@ export const createNewGroupMeeting = async (req, res) => {
     }
 };  
 
-export const getAllMeetings = async (req, res) => {
+export const getGroupMeetings = async (req, res) => {
+    const { groupId } = req.params;
+
+    const group = await Group.findById(groupId);
+
+    if (!group) {
+        return res.status(404).json({error:true, message:`Group ${groupId} not found`});
+    }
+
     try {
-        return res.status(200).json({meetings: await Meeting.find({})});
+        return res.status(200).json({meetings: await Meeting.find({group:groupId}).populate('group', ['name', 'description'])});
     } catch (e) {
-        return res.status(500).json({error:true, message:"Error getting the meetings"});
+        return res.status(400).json({error:true, message:"Error when trying to fetch meetings"});
     }
 };

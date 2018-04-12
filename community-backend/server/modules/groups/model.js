@@ -21,19 +21,26 @@ const GroupSchema = new Schema({
     }]
 }, {timestamps:true});
 
-
+/**
+ * Create a meeting and add it to its parent group
+ * @param String id 
+ * @param Object args 
+ */
 GroupSchema.statics.addMeeting = async function(id, args) {
     // console.log(id, args);
     
     const Meeting = mongoose.model('Meeting');
+    const meeting = await new Meeting({...args, group:id });
 
-    const group = await this.findById(id);
+    const group = await this.findByIdAndUpdate(id, { $push: { meetings: meeting.id } });
 
-    const meeting = await new Meeting({...args, group });
 
-    group.meetings.push(meeting);
+    // group.meetings.push(meeting);
 
-    return await Promise.all([meeting.save(), group.save()]);
+    return {
+        meeting:await meeting.save(),
+        group
+    };
 
     // console.log(meeting);
 

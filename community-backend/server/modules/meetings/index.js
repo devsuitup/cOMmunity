@@ -1,4 +1,5 @@
+import Meeting from "./model";
 import  MeetingRoutes from "./routes";
 
-export { MeetingRoutes };
+export { Meeting, MeetingRoutes };
 
