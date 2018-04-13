@@ -1,9 +1,31 @@
-// import fetch from 'node-fetch';
+import axios from 'axios';
 
-export const fetchMeetings = () => 
+axios.defaults.baseURL = 'http://192.168.56.1:3000/api';
+
+
+class MeetingApi {
+    constructor() {
+        this.groupId = "5acf6b234332f33f30eb022a";
+        this.path = `groups/${this.groupId}/meetings`
+    }
+
+    async fetchGroupMeeting () {
+        const {data} = await axios.get(this.path);
+
+        return data.meetings;
+    }
+}
+
+export {
+    MeetingApi,
+}
+
+
+// import fetch from 'node-fetch';
+// export const fetchMeetings = () => 
     // fetch('http://localhost:3000/api/meetings')
-    fetch('http://192.168.56.1:3000/api/meetings')
-        .then(res => res.json())
+    // fetch('http://192.168.56.1:3000/api/meetings')
+        // .then(res => res.json())
         // .then(json => console.log(json));
 	// .then(json => console.log(json));
     // .then(res => 
@@ -17,3 +39,5 @@ export const fetchMeetings = () =>
 
     // .err(err => console.error(err));
     
+
+//  */

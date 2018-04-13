@@ -14,6 +14,11 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "loading": {
+      "icon": "./assets/splash.png",
+      "backgroundColor": "#ffffff",
+      "hideExponentText": false
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },

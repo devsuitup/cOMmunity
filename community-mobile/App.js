@@ -1,79 +1,54 @@
 import React from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
-import { fetchMeetings } from './constants/api';
+import { AppLoading } from 'expo';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import Colors from './constants/Colors';
+import { HomeScreen } from './src/screens';
+import { CachedFonts } from './helpers';
 
+EStyleSheet.build(Colors);
 
 export default class App extends React.Component {
 
-  static defaultProps = {
-    fetchMeetings
-  }
-
   state = {
-    loading:false,
-    meetings:[]
+    assetsLoaded:false,
   }
+  
+  async _loadAssetAsync() {
 
-  async componentDidMount () {
-    this.setState({loading:true});
+    const fontAssets = CachedFonts([
+      {montserrat: require('./assets/fonts/Montserrat-Regular.ttf')},
+      {montserratBold: require('./assets/fonts/Montserrat-Bold.ttf')},
+      {montserratLight: require('./assets/fonts/Montserrat-Light.ttf')},
+      {montserratMedium: require('./assets/fonts/Montserrat-Medium.ttf')},
+    ]);
 
-    // Sleep for 10 seconds
-    await new Promise(resolve => { setTimeout(resolve, 10000); });
-    
-    // fetchMeetings()
-      // .then((data) => this.setState({loading: false, meetings:data.meetings}));
+    return Promise.all(fontAssets);
 
-      // OR 
-    
-    const data = await this.props.fetchMeetings();
-    console.log('data', data);
-    this.setState({loading: false, meetings:data.meetings});
-
-
-
-    // console.log(this.props.fetchMeetings, await this.props.fetchMeetings());
-    // fetchMeetings().then((data) => {
-    //   console.log('data', data);
-    //   this.setState({loading: false, meetings:data.meetings});
-    // });
-    
-    // fetch('http://192.168.56.1:3000/api/meetings')
-    // .then(res => {
-        // const data = res.json()
-        // const data = res.json()
-        // this.setState();
+    // console.log('before timeout');
+    // await new Promise(function(resolve, reject) { 
+    //   setTimeout(() => {
+    //       console.log('inside timeout');
+    //       resolve();
+    //   }, 10000)
     // });
 
+    // this.setState({ assetsLoaded: true });
   }
 
+  // componentDidMount() {
+    // this._loadAssetAsync();
+  // }
 
   render() {
-    if (this.state.loading) {
-      return (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" />
-        </View>
 
-      )
-    } else {
-      return (
-        <View style={styles.container}>
-          <Text>cOMmunity \_o_/</Text>
-          {this.state.meetings.map((meeting, i) => (
-            <Text key={i}>{meeting.title}</Text>
-          ))}
-
-        </View>
-      );
-    }
+    if (!this.state.assetsLoaded) 
+      return <AppLoading style={{ flex: 1 }}
+          startAsync={this._loadAssetAsync}
+          onFinish={() => this.setState({ assetsLoaded: true })}
+          onError={console.warn}
+        />
+    
+    return <HomeScreen />;
   }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+}
