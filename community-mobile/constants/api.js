@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://192.168.56.1:3000/api';
+axios.defaults.baseURL = 'http://10.0.3.2:3000/api';
+// axios.defaults.baseURL = 'http://192.168.56.1:3000/api';
 
 
 class MeetingApi {

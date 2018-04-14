@@ -3,7 +3,6 @@ import EStyleSheet from "react-native-extended-stylesheet";
 const styles = EStyleSheet.create({
     root:{
         flex:1,
-        // height:600,
         justifyContent:'center',
         backgroundColor:'$darkBlueColor'
     },
@@ -14,7 +13,7 @@ const styles = EStyleSheet.create({
         // backgroundColor:'red'
     },
     bottomContainer: {
-        flex:0.8,
+        flex:0.9,
         justifyContent:'center',
         alignItems:'center',
         // backgroundColor:'blue'
