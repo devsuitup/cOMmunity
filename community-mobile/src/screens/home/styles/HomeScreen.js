@@ -3,6 +3,7 @@ import EStyleSheet from "react-native-extended-stylesheet";
 const styles = EStyleSheet.create({
     root:{
         flex:1,
+        // height:600,
         justifyContent:'center',
         backgroundColor:'$darkBlueColor'
     },

@@ -21,7 +21,7 @@ const styles = EStyleSheet.create({
         height:200,
         width:175,
         marginHorizontal:'0.5rem',
-        backgroundColor:'#F73859'
+        backgroundColor:'$redColor'
 
     },
     meetingCardTopContainer: {

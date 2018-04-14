@@ -2,8 +2,8 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Colors from './constants/Colors';
-import { HomeScreen } from './src/screens';
 import { CachedFonts } from './helpers';
+import  Root from './src/Root';
 
 EStyleSheet.build(Colors);
 
@@ -48,7 +48,7 @@ export default class App extends React.Component {
           onError={console.warn}
         />
     
-    return <HomeScreen />;
+    return <Root />;
   }
 
 }
