@@ -3,17 +3,20 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://10.0.3.2:3000/api';
 // axios.defaults.baseURL = 'http://192.168.56.1:3000/api';
 
-
 class MeetingApi {
+        
     constructor() {
         this.groupId = "5acf6b234332f33f30eb022a";
         this.path = `groups/${this.groupId}/meetings`
     }
 
     async fetchGroupMeeting () {
-        const {data} = await axios.get(this.path);
-
-        return data.meetings;
+        try {
+            const {data} = await axios.get(this.path);
+            return data.meetings;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 

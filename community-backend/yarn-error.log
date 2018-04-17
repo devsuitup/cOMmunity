@@ -3618,7 +3618,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 3221225786
+  Exit code: 1073807364
   Command: C:\Windows\system32\cmd.exe
   Arguments: /d /s /c set NODE_ENV=development && nodemon index.js
   Directory: E:\Serveur\cOMmunity\community-backend

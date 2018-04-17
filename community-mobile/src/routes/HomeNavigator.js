@@ -1,6 +1,8 @@
+import React, { Component } from 'react';
 import { TabNavigator } from 'react-navigation';
 import Colors from "../../constants/Colors";
-import { Platform, StatusBar } from 'react-native';
+import { HeaderComponent } from '../commons';
+import { Platform, StatusBar, Text, View } from 'react-native';
 
 import {
      HomeScreen, 
@@ -35,12 +37,14 @@ export default TabNavigator ({
         }
     },
     navigationOptions: {
-        title:'cOMmunity',
+        header:HeaderComponent,
+        // title:(<Text>cOmmunity</Text>), //'cOMmunity',
         headerBackTitle: null,
         headerTitleStyle: {
             alignSelf: 'center',
             textAlign: 'center',
             width: '90%',
+            // height:
         },
         headerStyle: {
             backgroundColor:Colors.$redColor,
