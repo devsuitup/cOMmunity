@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add babel-core
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @expo/vector-icon
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\iis express\PHP\v7.1;C:\Windows\system32\inetsrv;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Users\jb_fo\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Program Files\Genymobile\Genymotion\tools;C:\Users\jb_fo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\jb_fo\AppData\Local\Yarn\bin;C:\Users\jb_fo\AppData\Roaming\npm;
@@ -20,6 +20,7 @@ npm manifest:
     "dependencies": {
       "@expo/vector-icons": "^6.3.1",
       "axios": "^0.18.0",
+      "babel-core": "^6.26.0",
       "babel-generator": "^6.26.1",
       "expo": "^26.0.0",
       "react": "16.3.0-alpha.1",
@@ -29,6 +30,9 @@ npm manifest:
       "react-redux": "^5.0.7",
       "redux": "^3.7.2",
       "redux-promise-middleware": "^5.0.0"
+    },
+    "devDependencies": {
+      "redux-logger": "^3.0.6"
     }
   }
 
@@ -1716,6 +1720,10 @@ Lockfile:
   dedent@^0.6.0:
     version "0.6.0"
     resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
+  
+  deep-diff@^0.3.5:
+    version "0.3.8"
+    resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.8.tgz#c01de63efb0eec9798801d40c7e0dae25b582c84"
   
   deep-extend@~0.4.0:
     version "0.4.2"
@@ -3935,6 +3943,12 @@ Lockfile:
       isarray "0.0.1"
       string_decoder "~0.10.x"
   
+  redux-logger@^3.0.6:
+    version "3.0.6"
+    resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-3.0.6.tgz#f7555966f3098f3c88604c449cf0baf5778274bf"
+    dependencies:
+      deep-diff "^0.3.5"
+  
   redux-promise-middleware@^5.0.0:
     version "5.0.0"
     resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-5.0.0.tgz#1656b24f9ac962bf11fbe55ea8360810e18d47a7"
@@ -4885,4 +4899,14 @@ Lockfile:
       yargs-parser "^7.0.0"
 
 Trace: 
-  Error: EPERM: operation not permitted, lstat 'E:\Serveur\cOMmunity\community-mobile\node_modules\babel-core\node_modules'
+  Error: https://registry.yarnpkg.com/@expo%2fvector-icon: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65019:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:132430:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:133413:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:133333:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)

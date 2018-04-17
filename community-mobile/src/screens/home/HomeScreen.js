@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import { connect } from 'react-redux';
 import { FontAwesome } from "@expo/vector-icons";
+import { Button, Icon } from 'native-base';
 
 import { LoadingScreen } from "../../commons"
 import { MeetingList } from "./components"
@@ -18,14 +19,38 @@ import Colors from '../../../constants/Colors'
 )
 class HomeScreen extends React.Component {
 
-    static navigationOptions = {
-        tabBarIcon: ({tintColor}) => (
-            <FontAwesome
-                name="home"
-                size={25}
-                color={tintColor}
-            />
-        )
+    static navigationOptions = ({ navigation }) => {
+
+        return {
+            headerRight: (
+                    <View>
+                        <Button 
+                            transparent
+                            onPress = {() => navigation.navigate('CreateMeeting')}
+                        >
+                            <Icon
+                                name="md-add-circle"
+                                style={{
+                                    color:Colors.$whiteColor,
+                                    fontSize:30
+                                }}
+                            />
+                        </Button>
+                    </View>
+            ),
+            // headerStyle: {
+            //     backgroundColor:Colors.$redColor,
+            //     // alignItems:'center',
+            // },
+
+            tabBarIcon: ({tintColor}) => (
+                <FontAwesome
+                    name="home"
+                    size={25}
+                    color={tintColor}
+                />
+            )
+        }
     }
 
     // state = {

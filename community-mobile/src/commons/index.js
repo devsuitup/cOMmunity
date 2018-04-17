@@ -1,4 +1,4 @@
 import LoadingScreen from './loadingScreen';
-import HeaderComponent from './headerComponent';
+import HeaderTitleComponent from './HeaderTitleComponent';
 
-export { LoadingScreen, HeaderComponent };
+export { LoadingScreen, HeaderTitleComponent };

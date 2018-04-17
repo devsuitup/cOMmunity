@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { TabNavigator } from 'react-navigation';
+import { Button } from 'native-base';
 import Colors from "../../constants/Colors";
-import { HeaderComponent } from '../commons';
+import { HeaderTitleComponent } from '../commons';
 import { Platform, StatusBar, Text, View } from 'react-native';
 
 import {
@@ -36,18 +37,32 @@ export default TabNavigator ({
             backgroundColor:Colors.$blackColor,
         }
     },
-    navigationOptions: {
-        header:HeaderComponent,
-        // title:(<Text>cOmmunity</Text>), //'cOMmunity',
-        headerBackTitle: null,
+    navigationOptions: ({ navigation }) => ({
+        headerTitle:HeaderTitleComponent,
+        headerLeft: (<View/>),
+        // headerLeft: navigation.state.routeName === 'Home'
+        //     ? <View />
+        //     : <Button clickAction={() => navigation.goBack()} />,
+        headerRight: (<View/>),
         headerTitleStyle: {
+            // flex:1
             alignSelf: 'center',
             textAlign: 'center',
-            width: '90%',
-            // height:
+            width: '80%',
+        //     // height:
         },
         headerStyle: {
+            // justifyContent: 'center',
             backgroundColor:Colors.$redColor,
-        }
-    },
+        },
+        // headerLeftStyle: {
+        // //     flex:0.3,
+        //     width:'30%',
+        //     // backgroundColor:Colors.$redColor,
+        // },
+        // headerRightStyle: {
+        // //     flex:0.3,
+        //     width:'30%',
+        // }
+    }),
 });

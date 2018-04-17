@@ -5,7 +5,7 @@ const styles = EStyleSheet.create({
     root:{
         height: 80,
         // marginTop: 20, /* only for IOS to give StatusBar Space */
-        backgroundColor: Colors.$redColor,
+        // backgroundColor: Colors.$redColor,
         alignSelf: 'center',
         justifyContent:'center',
         alignItems:'center',
