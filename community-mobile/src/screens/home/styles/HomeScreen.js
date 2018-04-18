@@ -18,6 +18,10 @@ const styles = EStyleSheet.create({
         alignItems:'center',
         // backgroundColor:'blue'
         
+    },
+    iconAdd: {
+        // paddingRight:'3%',
+        marginRight:'1rem',
     }
 });
 

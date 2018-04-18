@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import { Button, Icon } from 'native-base';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Colors from '../../../constants/Colors';
+import styles from './styles/CreateMeetingScreen';
+import { MaterialIcons } from '@expo/vector-icons'
+import { FormLabel, FormInput, Button } from 'react-native-elements';
 
 class CreateMeetingScreen extends Component {
 
@@ -10,6 +12,8 @@ class CreateMeetingScreen extends Component {
         return {
             title:'Create a new meeting',
             headerTitleStyle:{
+                fontFamily: "montserrat",
+                fontWeight:"200",
                 color:Colors.$whiteColor,
                 alignSelf: 'center',
                 textAlign: 'center',
@@ -32,24 +36,56 @@ class CreateMeetingScreen extends Component {
             headerRight: (<View/>),
             headerLeft:({onPress}) => {
                 return (
-                    <Button transparent>
-                        <Icon transparent onPress ={() => onPress()}
-                            name="md-close"
-                            style={{
-                                backgroundColor:Colors.$redColor,
-                                fontSize:30,
-                                color:Colors.$whiteColor
-                            }}
+                    <TouchableOpacity 
+                        style={styles.iconClose} 
+                        onPress = {() => onPress()} 
+                    >
+                        <MaterialIcons 
+                            name="close"
+                            size={30}
+                            color={Colors.$whiteColor}
                         />
-                    </Button>
-                )}
+                    </TouchableOpacity>
+                )
+            }
         }    
     }
     
     render() {
         return (
-            <View>
-                <Text>This is my future form</Text>
+            <View style={styles.root}>
+                <View style={styles.container}>
+                    <View style={styles.item}>
+                        <FormLabel fontFamily="montserrat" fontWeight="normal" >Title</FormLabel>
+                        <FormInput 
+                            selectionColor={Colors.$redColor}
+                            underlineColorAndroid={Colors.$grayColor}
+                        />
+                    </View>
+                    <View style={styles.item}>
+                        <FormLabel fontFamily="montserrat" fontWeight="normal" >Description</FormLabel>
+                        <FormInput 
+                            multiline
+                            selectionColor={Colors.$redColor}
+                            underlineColorAndroid={Colors.$grayColor}
+                        />
+                    </View>
+                    <View style={styles.item}>
+                        <Button
+                            title="Pick a date"
+                            raised
+                            fontFamily="montserrat"
+                        />
+                    </View>
+                    <View style={styles.buttonCreate}>
+                        <Button
+                            title="It's a date !"
+                            raised
+                            backgroundColor={Colors.$darkBlueColor}
+                            fontFamily="montserrat"
+                        />
+                    </View>
+                </View>
             </View>
         );
     }
