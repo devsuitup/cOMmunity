@@ -18,6 +18,14 @@ class MeetingApi {
             console.log(e);
         }
     }
+
+    async createNewMeeting (args) {
+        try {
+            return await axios.post(`${this.path}/new`, {...args});
+        } catch (e) {
+            console.log('error from api', e, e.response);
+        }
+    }
 }
 
 export {

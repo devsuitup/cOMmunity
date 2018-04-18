@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TabNavigator } from 'react-navigation';
-import { Button } from 'native-base';
 import Colors from "../../constants/Colors";
 import { HeaderTitleComponent } from '../commons';
 import { Platform, StatusBar, Text, View } from 'react-native';
