@@ -6,6 +6,12 @@ const styles = EStyleSheet.create({
         justifyContent:'center',
         backgroundColor:'$darkBlueColor'
     },
+    messageError: {
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center',
+        // backgroundColor:'red'
+    },
     topContainer: {
         flex:1,
         justifyContent:'center',

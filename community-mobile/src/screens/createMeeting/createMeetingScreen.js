@@ -1,28 +1,39 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import Colors from '../../../constants/Colors';
-import styles from './styles/CreateMeetingScreen';
-import { MaterialIcons } from '@expo/vector-icons'
-import { FormLabel, FormInput, Button } from 'react-native-elements';
-import DateTimePicker from 'react-native-modal-datetime-picker';
-import moment from 'moment';
-import { MeetingApi } from '../../../constants/api';
+import React, { Component } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import { reduxForm, Field } from "redux-form";
+import { connect } from 'react-redux';
+import Colors from "../../../constants/Colors";
+import styles from "./styles/CreateMeetingScreen";
+import { MaterialIcons } from "@expo/vector-icons"
+import { FormLabel, FormInput, Button } from "react-native-elements";
+import DateTimePicker from "react-native-modal-datetime-picker";
+import moment from "moment";
+import { MeetingApi } from "../../../constants/api";
+import { CreateMeetingForm } from "./components";
+import { createMeeting } from './actions';
+import {LoadingScreen} from "../../commons";
 
 const meetingApi = new MeetingApi();
 
-class CreateMeetingScreen extends Component {
+@connect(
+    state => ({
+        meeting:state.createMeeting
+    }),
+    { createMeeting }
+)
+export default class CreateMeetingScreen extends Component {
 
     static navigationOptions = () => {
 
         return {
-            title:'Create a new meeting',
+            title:"Create a new meeting",
             headerTitleStyle:{
                 fontFamily: "montserrat",
                 fontWeight:"200",
                 color:Colors.$whiteColor,
-                alignSelf: 'center',
-                textAlign: 'center',
-                width: '80%',
+                alignSelf: "center",
+                textAlign: "center",
+                width: "80%",
             },
             headerRight: (<View/>),
             headerLeft:({onPress}) => {
@@ -42,21 +53,14 @@ class CreateMeetingScreen extends Component {
         }    
     }
 
-    _createMeeting = async () => {
+    _createMeeting = async values => {
         const {
-            title, description, eventDate
+            eventDate
         } = this.state;
 
-        const res = await meetingApi.createNewMeeting({
-            title, description, eventDate
-        });
-
-        console.log(res);
+        await this.props.createMeeting ({...values, eventDate});
+        this.props.navigation.goBack();
     }
-
-    _updateTitle = title => this.setState({title});
-
-    _updateDescription = description => this.setState({description});
 
     _handleDatePicked = eventDate => {
         this.setState({eventDate});
@@ -67,68 +71,49 @@ class CreateMeetingScreen extends Component {
     
     state = {
         isDateTimePickerVisible:false,
-        title:'',
-        description:'',
         eventDate:moment(),
     }
 
     _isFormIncomplete = () => {
         console.log(this.state);
         const {
-            title,
-            description,
             eventDate
         } = this.state;
 
-        return title < 5 || description < 5 || eventDate <= moment();
+        return eventDate <= moment();
     }
 
     _selectDateTitle = () => {
-        return this.state.eventDate < moment() ? 'Pick a date' : moment(this.state.eventDate).format('LLLL');
+        return this.state.eventDate < moment() ? "Pick a date" : moment(this.state.eventDate).format("LLLL");
     }
 
+    _showDateTimePicker = () => this.setState({isDateTimePickerVisible: true})
+
     render() {
+        const {
+            meeting
+        } = this.props;
+
+        if (meeting.isLoading) 
+            return (
+                    <LoadingScreen/>
+        );
+        
+        else if (meeting.errors.on)
+            return (
+                <View style={styles.root}>
+                    <Text>{meeting.errors.message}</Text>
+                </View>
+        );
+
+
         return (
             <View style={styles.root}>
-                <View style={styles.container}>
-                    <View style={styles.item}>
-                        <FormLabel fontFamily="montserrat" fontWeight="normal" >Title</FormLabel>
-                        <FormInput 
-                            selectionColor={Colors.$redColor}
-                            underlineColorAndroid={Colors.$grayColor}
-                            onChangeText={(title) => this._updateTitle(title)}
-                            value={this.state.title}
-                        />
-                    </View>
-                    <View style={styles.item}>
-                        <FormLabel fontFamily="montserrat" fontWeight="normal" >Description</FormLabel>
-                        <FormInput 
-                            multiline
-                            selectionColor={Colors.$redColor}
-                            underlineColorAndroid={Colors.$grayColor}
-                            onChangeText={(description) => this._updateDescription(description)}
-                            value={this.state.description}
-                        />
-                    </View>
-                    <View style={styles.item}>
-                        <Button
-                            title={this._selectDateTitle()}
-                            raised
-                            fontFamily="montserrat"
-                            onPress={() => this.setState({isDateTimePickerVisible:true})}
-                        />
-                    </View>
-                    <View style={styles.buttonCreate}>
-                        <Button
-                            title="It's a date !"
-                            raised
-                            backgroundColor={Colors.$darkBlueColor}
-                            fontFamily="montserrat"
-                            disabled={this._isFormIncomplete()}
-                            onPress={this._createMeeting}
-                        />
-                    </View>
-                </View>
+                <CreateMeetingForm 
+                    createMeeting={this._createMeeting}
+                    showDateTimePicker={this._showDateTimePicker}
+                    selectDateTitle={this._selectDateTitle()}
+                />
                 <DateTimePicker
                     isVisible={this.state.isDateTimePickerVisible}
                     onConfirm={this._handleDatePicked}
@@ -139,5 +124,3 @@ class CreateMeetingScreen extends Component {
         );
     }
 }
-
-export default CreateMeetingScreen;

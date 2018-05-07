@@ -1,17 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js upgrade-interactively
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\iis express\PHP\v7.1;C:\Windows\system32\inetsrv;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;C:\Users\jb_fo\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Program Files\Genymobile\Genymotion\tools;C:\Users\jb_fo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\jb_fo\AppData\Local\Yarn\bin;C:\Users\jb_fo\AppData\Roaming\npm;
 
 Yarn version: 
-  1.5.1
+  1.6.0
 
 Node version: 
   8.11.1
 
 Platform: 
   win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, lstat 'E:\Serveur\cOMmunity\community-mobile\node_modules\.bin'
 
 npm manifest: 
   {
@@ -22,6 +25,7 @@ npm manifest:
       "axios": "^0.18.0",
       "babel-core": "^6.26.0",
       "babel-generator": "^6.26.1",
+      "eslint-plugin-react": "^7.7.0",
       "expo": "^26.0.0",
       "moment": "^2.22.1",
       "react": "16.3.0-alpha.1",
@@ -568,6 +572,13 @@ Lockfile:
   array-filter@~0.0.0:
     version "0.0.1"
     resolved "https://registry.yarnpkg.com/array-filter/-/array-filter-0.0.1.tgz#7da8cf2e26628ed732803581fd21f67cacd2eeec"
+  
+  array-includes@^3.0.3:
+    version "3.0.3"
+    resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.0.3.tgz#184b48f62d92d7452bb31b323165c7f8bd02266d"
+    dependencies:
+      define-properties "^1.1.2"
+      es-abstract "^1.7.0"
   
   array-map@~0.0.0:
     version "0.0.0"
@@ -1762,6 +1773,13 @@ Lockfile:
     version "0.4.2"
     resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
   
+  define-properties@^1.1.2:
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/define-properties/-/define-properties-1.1.2.tgz#83a73f2fea569898fb737193c8f873caf6d45c94"
+    dependencies:
+      foreach "^2.0.5"
+      object-keys "^1.0.8"
+  
   define-property@^0.2.5:
     version "0.2.5"
     resolved "https://registry.yarnpkg.com/define-property/-/define-property-0.2.5.tgz#c35b1ef918ec3c990f9a5bc57be04aacec5c8116"
@@ -1814,6 +1832,12 @@ Lockfile:
   detect-newline@^2.1.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
+  
+  doctrine@^2.0.2:
+    version "2.1.0"
+    resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
+    dependencies:
+      esutils "^2.0.2"
   
   dom-walk@^0.1.0:
     version "0.1.1"
@@ -1868,6 +1892,24 @@ Lockfile:
       accepts "~1.3.3"
       escape-html "~1.0.3"
   
+  es-abstract@^1.7.0:
+    version "1.11.0"
+    resolved "https://registry.yarnpkg.com/es-abstract/-/es-abstract-1.11.0.tgz#cce87d518f0496893b1a30cd8461835535480681"
+    dependencies:
+      es-to-primitive "^1.1.1"
+      function-bind "^1.1.1"
+      has "^1.0.1"
+      is-callable "^1.1.3"
+      is-regex "^1.0.4"
+  
+  es-to-primitive@^1.1.1:
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/es-to-primitive/-/es-to-primitive-1.1.1.tgz#45355248a88979034b6792e19bb81f2b7975dd0d"
+    dependencies:
+      is-callable "^1.1.1"
+      is-date-object "^1.0.1"
+      is-symbol "^1.0.1"
+  
   es6-error@^4.1.1:
     version "4.1.1"
     resolved "https://registry.yarnpkg.com/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
@@ -1879,6 +1921,15 @@ Lockfile:
   escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
     version "1.0.5"
     resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
+  
+  eslint-plugin-react@^7.7.0:
+    version "7.7.0"
+    resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.7.0.tgz#f606c719dbd8a1a2b3d25c16299813878cca0160"
+    dependencies:
+      doctrine "^2.0.2"
+      has "^1.0.1"
+      jsx-ast-utils "^2.0.1"
+      prop-types "^15.6.0"
   
   esutils@^2.0.0, esutils@^2.0.2:
     version "2.0.2"
@@ -2152,6 +2203,10 @@ Lockfile:
     dependencies:
       for-in "^1.0.1"
   
+  foreach@^2.0.5:
+    version "2.0.5"
+    resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+  
   forever-agent@~0.6.1:
     version "0.6.1"
     resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -2217,6 +2272,10 @@ Lockfile:
       inherits "~2.0.0"
       mkdirp ">=0.5 0"
       rimraf "2"
+  
+  function-bind@^1.0.2, function-bind@^1.1.1:
+    version "1.1.1"
+    resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   
   gauge@~1.2.5:
     version "1.2.7"
@@ -2410,6 +2469,12 @@ Lockfile:
       is-number "^3.0.0"
       kind-of "^4.0.0"
   
+  has@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/has/-/has-1.0.1.tgz#8461733f538b0837c9361e39a9ab9e9704dc2f28"
+    dependencies:
+      function-bind "^1.0.2"
+  
   hawk@3.1.3, hawk@~3.1.3:
     version "3.1.3"
     resolved "https://registry.yarnpkg.com/hawk/-/hawk-3.1.3.tgz#078444bd7c1640b0fe540d2c9b73d59678e8e1c4"
@@ -2590,6 +2655,10 @@ Lockfile:
     dependencies:
       builtin-modules "^1.0.0"
   
+  is-callable@^1.1.1, is-callable@^1.1.3:
+    version "1.1.3"
+    resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.3.tgz#86eb75392805ddc33af71c92a0eedf74ee7604b2"
+  
   is-data-descriptor@^0.1.4:
     version "0.1.4"
     resolved "https://registry.yarnpkg.com/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -2601,6 +2670,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/is-data-descriptor/-/is-data-descriptor-1.0.0.tgz#d84876321d0e7add03990406abbbbd36ba9268c7"
     dependencies:
       kind-of "^6.0.0"
+  
+  is-date-object@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
   
   is-descriptor@^0.1.0:
     version "0.1.6"
@@ -2704,9 +2777,19 @@ Lockfile:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
   
+  is-regex@^1.0.4:
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.0.4.tgz#5517489b547091b0930e095654ced25ee97e9491"
+    dependencies:
+      has "^1.0.1"
+  
   is-stream@^1.0.1, is-stream@^1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+  
+  is-symbol@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/is-symbol/-/is-symbol-1.0.1.tgz#3cc59f00025194b6ab2e38dbae6689256b660572"
   
   is-typedarray@~1.0.0:
     version "1.0.0"
@@ -2853,6 +2936,12 @@ Lockfile:
       extsprintf "1.3.0"
       json-schema "0.2.3"
       verror "1.10.0"
+  
+  jsx-ast-utils@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
+    dependencies:
+      array-includes "^3.0.3"
   
   kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
     version "3.2.2"
@@ -3503,6 +3592,10 @@ Lockfile:
       define-property "^0.2.5"
       kind-of "^3.0.3"
   
+  object-keys@^1.0.8:
+    version "1.0.11"
+    resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
+  
   object-resolve-path@^1.1.0:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/object-resolve-path/-/object-resolve-path-1.1.1.tgz#a7f8f93e8a20af80e44217ba7db54316d9d12232"
@@ -4139,8 +4232,8 @@ Lockfile:
       deep-diff "^0.3.5"
   
   redux-promise-middleware@^5.0.0:
-    version "5.0.0"
-    resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-5.0.0.tgz#1656b24f9ac962bf11fbe55ea8360810e18d47a7"
+    version "5.1.1"
+    resolved "https://registry.yarnpkg.com/redux-promise-middleware/-/redux-promise-middleware-5.1.1.tgz#37689339a58a33d1fda675ed1ba2053a2d196b8d"
   
   redux@^3.7.2:
     version "3.7.2"
@@ -5125,16 +5218,3 @@ Lockfile:
       which-module "^2.0.0"
       y18n "^3.2.1"
       yargs-parser "^7.0.0"
-
-Trace: 
-  Error: Command "upgrade-interactively" not found.
-      at new MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:87307:17
-      at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:98:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:116:14
-      at new Promise (<anonymous>)
-      at new F (C:\Program Files (x86)\Yarn\lib\cli.js:23451:28)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:95:12
-      at runCommand (C:\Program Files (x86)\Yarn\lib\cli.js:87312:22)
-      at Object.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:87412:14)

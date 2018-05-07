@@ -1,14 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import promiseMiddleware from 'redux-promise-middleware';
-import { createLogger } from 'redux-logger'
-import reducers from './reducers';
+import { createStore, applyMiddleware, compose } from "redux";
+import promiseMiddleware from "redux-promise-middleware";
+import { createLogger } from "redux-logger";
+import reducers from "./reducers";
+import thunk from "redux-thunk";
 
 const middlewares = [
-    promiseMiddleware()
+    promiseMiddleware(),
+    thunk
 ];
 
 if (__DEV__) {
-    // const {logger} = require('redux-logger');
+    // const {logger} = require("redux-logger");
     // console.log(logger);
 
     middlewares.push(createLogger());

@@ -1,6 +1,6 @@
 import {
     FETCH_MY_MEETINGS
-} from './actions'
+} from './actions';
 
 const INITIAL_STATE = {
     myMeetings: {
@@ -14,34 +14,36 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-    console.log(action.type, `${FETCH_MY_MEETINGS}_FULFILLED`);
+    
     switch (action.type) {
-        case `${FETCH_MY_MEETINGS}_PENDING`:
-            return INITIAL_STATE;
-        case `${FETCH_MY_MEETINGS}_FULFILLED`:
-            return {
-                myMeetings: {
-                    data:action.payload,
-                    isFetched:true,
-                    errors : {
-                        on:false,
-                        message: null
-                    }
+
+    case `${FETCH_MY_MEETINGS}_PENDING`:
+        return INITIAL_STATE;
+    case `${FETCH_MY_MEETINGS}_FULFILLED`:
+        // console.log('payload', action.payload);
+        return {
+            myMeetings: {
+                data:action.payload,
+                isFetched:true,
+                errors : {
+                    on:false,
+                    message: null
                 }
-            };
-        case `${FETCH_MY_MEETINGS}_REJECTED`:
-            return {
-                myMeetings:  {
-                    data:[],
-                    isFetched:false,
-                    errors : {
-                        on:true,
-                        message: 'Error while fetching my meetings'
-                    }
+            }
+        };
+    case `${FETCH_MY_MEETINGS}_REJECTED`:
+        return {
+            myMeetings:  {
+                data:[],
+                isFetched:true,
+                errors : {
+                    on:true,
+                    message: 'Error while fetching my meetings'
                 }
-            };
-            
-        default:
-            return state;
+            }
+        };
+        
+    default:
+        return state;
     }
 };

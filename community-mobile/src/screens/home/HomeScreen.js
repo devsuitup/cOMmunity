@@ -74,8 +74,6 @@ class HomeScreen extends React.Component {
             }
         } = this.props;
 
-        // console.log(this.props);
-
         if (!isFetched) {
             return (
                 <View style={styles.root}>
@@ -83,7 +81,11 @@ class HomeScreen extends React.Component {
                 </View>)
         } else if (errors.on) {
             return (
-                <View><Text>{error.messafe}</Text></View>
+                <View style={styles.root}>
+                    <View style={styles.messageError}>
+                        <Text>{errors.message}</Text>
+                    </View>
+                </View>
             )
         }
         return (

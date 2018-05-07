@@ -11,11 +11,13 @@ class MeetingApi {
     }
 
     async fetchGroupMeeting () {
+        // return [];
         try {
             const {data} = await axios.get(this.path);
             return data.meetings;
         } catch (e) {
-            console.log(e);
+            console.log('fetchGroupMeeting', e);
+            throw e;
         }
     }
 
